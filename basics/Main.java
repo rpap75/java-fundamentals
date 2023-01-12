@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.time.LocalDateTime;
+import java.time.format.*;
 
 public class Main {
   public static void main(String[] args) {
@@ -11,12 +13,18 @@ public class Main {
         	System.out.println("~FLIPPING COINS~");
 		flipNHeads(6);
 		System.out.print("\n\n");
+
+System.out.println("~COMMAND LINE CLOCK~");
+		clock();
   }
-  public static void pluralize (String word, int number) {
+  public static String pluralize (String word, int number) {
     if (number == 0 || number > 1) {
-      System.out.println("I own " + number + " " + word + "s.");
+			String newWord = word + "s";
+			return newWord;
+      // System.out.println("I own " + number + " " + word + "s.");
       } else{
-        System.out.println("I own " + number + " " + word + ".");
+        // System.out.println("I own " + number + " " + word + ".");
+				return word;
         }
         }
 public static void flipNHeads(int n) {
@@ -35,5 +43,20 @@ public static void flipNHeads(int n) {
 		}
 		System.out.println("It took " + flips + " flips to flip " + n + " heads in a row.");
 	}
+
+public static void clock(){
+	LocalDateTime now = LocalDateTime.now();
+	// int hour = now.getHour();
+	// int minute = now.getMinute();
+	// int second = now.getSecond();
+	// System.out.println(LocalDateTime.now());
+int previousSecond = -1;
+
+	while(true){
+		if(previousSecond != now.getSecond())
+	String time = now.format(DatTimeFormatter.ofPattern("HH:mm:ss"));
+	previousSecond = new.getSecond();
+}
+}
 
 }
