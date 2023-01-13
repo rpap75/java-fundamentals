@@ -52,7 +52,9 @@ int[] expectedArray =  (testArray[3]);
         assertNotNull(result);
         assertEquals(expectedArray, (result));
     }
+
       @Test
+
     void testWeatherData() {
         Library sut = new Library();
         int[][] weeklyMonthTemperatures = {
@@ -88,4 +90,6 @@ int[] expectedArray =  (testArray[3]);
             App classUnderTest = new App();
             assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
         }
-}
+
+    }
+
