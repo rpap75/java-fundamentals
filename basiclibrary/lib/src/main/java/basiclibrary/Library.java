@@ -63,5 +63,92 @@ int arrayLength = arrayOfValues.length;
         return 0;
     }
 
+    // Analyzing Weather Data
+    public String weather (int[][] arr) {
+        String output = "";
+        int highTemp = arr[0][0];
+        int lowTemp = arr[0][0];
+        HashSet<Integer> weatherData = new HashSet<>();
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] > highTemp)
+                    highTemp = arr[i][j];
+                if (arr[i][j] < lowTemp)
+                    lowTemp = arr[i][j];
+                weatherData.add(arr[i][j]);
+            }
+        }
+        System.out.println("\n~~ Analyzing Weather Data ~~");
+        System.out.println("High: " + highTemp);
+        System.out.println("Low: " + lowTemp);
+        for (int i = lowTemp; i <= highTemp; i++) {
+            if (weatherData.contains(i))
+                output += i + " ";
+            else
+                System.out.println("Never saw temperature: " + i);
+        }
+        return output;
+    }
+
+// Tally
+    public String tally(List<String> arr) {
+        HashMap<String, Integer> votes = new HashMap<>();
+        int numVotes = 0;
+        String elected = "";
+
+        for (String vote : arr) {
+            if (votes.containsKey(vote)) {
+                votes.put(vote, votes.get(vote) + 1);
+            }else {
+                votes.put(vote, 1);
+            }
+            for (String candidate : arr) {
+                if(votes.get(vote) > numVotes) {
+                    numVotes = votes.get(vote);
+                    elected = vote;
+            }
+            }
+        }
+            return elected;
+    }
+
+    public static void main(String[] args) throws IOException {
+        System.out.println("command line arguments: " + Arrays.toString(args));
+        System.out.println(System.getProperty("user.dir")); // shows what your relative directory is.
+//        lintFile("gates.js");
+    }
+
+    // Need a method to lint Files
+    public static void lintFile(String fileToBeRead) throws IOException {
+        // Get a Path
+        Path fileToBeLinted = Path.of(fileToBeRead);
+        int lineNumber = 0;
+        String errorMessage = "";
+        // Scanner
+        try(Scanner fileScanner = new Scanner(fileToBeLinted)){
+            // while file hasNextLine
+            while(fileScanner.hasNextLine()){
+                errorMessage = "";
+                // Grab ahold of the currentLine
+                String currentLine = fileScanner.nextLine();
+                lineNumber++;
+                // check for !endsWith(";")
+                if(!currentLine.endsWith(";")){
+                    // Check for other conditions
+                    if(currentLine.isEmpty() || currentLine.endsWith("{") || currentLine.endsWith("}") || currentLine.contains("if") || currentLine.contains("else")){
+                    } else {
+                        errorMessage += "Line: " + lineNumber + ": Missing semicolon.\n";
+                        System.out.println(errorMessage);
+
+                    }
+                    // if all false, sout out error message
+                }
+
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+    }
 
 }
