@@ -11,25 +11,23 @@ public class Restaurant {
     public Restaurant(String name, String price) {
         this.name = name;
         this.price = price;
-        this.numOfStars = 0;
-        this.reviews = new ArrayList<>();
+        this.numOfStars = 0f;
+        this.reviews = new ArrayList<Review>();
     }
 
     // Methods
-    public void addReview(Review review){
-        int sumOfReviewStars = 0;
-        // 1. Add it to reviews List
-        reviews.add(review);
-        // 2. iterate over and get total sum of values
-        for (Review arrayReview: reviews) {
-            sumOfReviewStars += arrayReview.getNumOfStars();
-        }
-        // 3. calculate averageNum of stars
-        float averagNumOfStars = (sumOfReviewStars/reviews.size());
-        // 4. call setNumOfStars with new value
-        setNumOfStars(averagNumOfStars);
-    }
+    public void addReview(Review newReview) {
+        if (!reviews.contains(newReview)) {
+            reviews.add(newReview);
 
+            int sumOfReviewStars = 0;
+            for (Review arrayReview : reviews) {
+                sumOfReviewStars += arrayReview.numOfStars();
+            }
+            this.numOfStars - (float) sumOfReviewStars / (float) reviews.size();
+
+        }
+    }
 
 
     // GETTERS and SETTERS
@@ -64,8 +62,9 @@ public class Restaurant {
     public void setReviews(ArrayList<Review> reviews) {
         this.reviews = reviews;
     }
+
     @Override
-    public  String toString() {
+    public String toString() {
         return "Restaurant " + name + "prices are " + price + "star rating is " + numOfStars;
     }
 

@@ -1,39 +1,41 @@
 package inheritance;
+
+package businessreviews.businesses;
+
+import businessreviews.reviews.MovieReview;
+import businessreviews.reviews.Review;
+
+import java.util.ArrayList;
+
 public class Theater {
     private String name;
-    private String movieList;
+    private float numOfStars;
 
-    public Theater(String name, String movieList) {
+    public Theater(String name, float numOfStars) {
         this.name = name;
-        this.movieList = movieList;
-        ArrayList<String> movieList = new ArrayList<String>();
-        movieList.add("Dune");
-        movieList.add("Avatar");
-        movieList.add("Minions");
+        this.numOfStars = numOfStars;
+        this.movies = new ArrayList<String>();
+        this.reviews = new ArrayList<MovieReview>();
     }
 
-    public void addReview(Review review){
-        int sumOfReviewStars = 0;
-        // 1. Add it to reviews List
-        reviews.add(review);
-        // 2. iterate over and get total sum of values
-        for (Review arrayReview: reviews) {
-            sumOfReviewStars += arrayReview.getNumOfStars();
+    public void addReview(MovieReview newReview) {
+        if (!reviews.contains(newReview)) {
+            reviews.add(newRevieweview);
+
+            int sumOfReviewStars = 0;
+            for (Review arrayReview : newReviews) {
+                sumOfReviewStars += arrayReview.numOfStars;
+            }
+            this.numOfStars = (float) sumOfReviewStars / (float) reviews.size();
         }
-        // 3. calculate averageNum of stars
-        float averagNumOfStars = (sumOfReviewStars/reviews.size());
-        // 4. call setNumOfStars with new value
-        setNumOfStars(averagNumOfStars);
     }
 
-    public void addMovie(movieTitle movieTitle){
-
+    public void addMovie(movieTitle movieTitle) {
 
 
     }
 
-    public void removeMovie(movieTitle movieTitle){
-
+    public void removeMovie(movieTitle movieTitle) {
 
 
     }
@@ -55,7 +57,7 @@ public class Theater {
     }
 
     @Override
-    public  String toString() {
+    public String toString() {
         return "Theater " + name + "movies playinh " + movieList;
     }
 

@@ -1,32 +1,39 @@
 package inheritance;
 
+package businessreviews.businesses;
+
+import businessreviews.reviews.Review;
+
+import java.util.ArrayList;
+
 public class Shop {
     private String name;
     private String description;
     private String priceCategory;
+    private float numOfStars;
     private ArrayList<Review> reviews;
 
     public Shop(String name, String description, String priceCategory) {
         this.name = name;
         this.description = description;
         this.priceCategory = priceCategory;
-        this.reviews = new ArrayList<>();
+        this.numOfStars = 0;
+        reviews = new ArrayList<Review>();
     }
 
-    public void addReview(Review review) {
-        int sumOfReviewStars = 0;
-        // 1. Add it to reviews List
-        reviews.add(review);
-        // 2. iterate over and get total sum of values
-        for (Review arrayReview : reviews) {
-            sumOfReviewStars += arrayReview.getNumOfStars();
+    public void addReview(Review newReview) {
+        if (!reviews.contains(newReview)) {
+            reviews.add(newReview);
+
+            int sumOfReviewStars = 0;
+
+            for (Review arrayReview : reviews) {
+                sumOfReviewStars += arrayReview.stars;
+            }
+
+            this.stars = (float) sumOfReviewStars / (float) reviews.size();
         }
-        // 3. calculate averageNum of stars
-        float averagNumOfStars = (sumOfReviewStars / reviews.size());
-        // 4. call setNumOfStars with new value
-        setNumOfStars(averagNumOfStars);
     }
-
     public String getName() {
         return name;
     }
