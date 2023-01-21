@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.time.LocalDateTime;
 import java.time.format.*;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
   public static void main(String[] args) {
@@ -17,6 +18,8 @@ public class Main {
 System.out.println("~COMMAND LINE CLOCK~");
 		clock();
   }
+
+  //Pluralize
   public static String pluralize (String word, int number) {
     if (number == 0 || number > 1) {
 			String newWord = word + "s";
@@ -27,6 +30,8 @@ System.out.println("~COMMAND LINE CLOCK~");
 				return word;
         }
         }
+
+		//Flipping Coing
 public static void flipNHeads(int n) {
 		Random rand = new Random();
 		int headCount = 0;
@@ -44,19 +49,20 @@ public static void flipNHeads(int n) {
 		System.out.println("It took " + flips + " flips to flip " + n + " heads in a row.");
 	}
 
-public static void clock(){
-	LocalDateTime now = LocalDateTime.now();
-	// int hour = now.getHour();
-	// int minute = now.getMinute();
-	// int second = now.getSecond();
-	// System.out.println(LocalDateTime.now());
-int previousSecond = -1;
+	//Comman Line Clock
 
-	while(true){
-		if(previousSecond != now.getSecond())
-	String time = now.format(DatTimeFormatter.ofPattern("HH:mm:ss"));
-	previousSecond = new.getSecond();
-}
-}
-
+	public static void clock() {
+		while (true) {
+			try {
+				LocalTime time = LocalTime.now();
+				DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+				String formattedTime = time.format(formatTime);
+				System.out.println(formattedTime);
+				// delays by miliseconds
+				Thread.sleep(1000);
+			} catch (Exception err) {
+				System.out.println(err);
+			}
+		}
+	}
 }
