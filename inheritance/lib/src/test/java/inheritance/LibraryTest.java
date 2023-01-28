@@ -13,8 +13,8 @@ class LibraryTest {
     }
     @Test void testingAddReviewOnRestaurant(){
         // Arrange
-        Review testReview = new Review("Was the best service", "Zork", 5);
-        Restaurant testRestaurant = new Restaurant("Zork's Bork's", "$$$");
+        Review testReview = new Review("AMAZING!", "pap", 4);
+        Restaurant testRestaurant = new Restaurant("Evelyn's", "$$");
         // Act
         testRestaurant.addReview(testReview);
         // Assert
@@ -32,13 +32,5 @@ class LibraryTest {
         assertEquals("Body", testReview.getText());
         assertEquals("Author", testReview.getAuthor());
         assertEquals(5, testReview.getNumOfStars());
-    }
-
-    @Test void testShop(){
-        // Arrange
-        Shop testScore = new
-        // Act
-
-        // Assert
     }
 }

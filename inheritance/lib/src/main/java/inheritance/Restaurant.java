@@ -63,9 +63,14 @@ public class Restaurant {
         this.reviews = reviews;
     }
 
-    @Override
-    public String toString() {
-        return "Restaurant " + name + "prices are " + price + "star rating is " + numOfStars;
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Restaurant{" +
+                "name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                ", numOfStars=" + numOfStars +
+                ", reviews=" + reviews +
+                '}';
     }
 
 }

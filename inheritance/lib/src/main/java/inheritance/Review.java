@@ -24,9 +24,12 @@ public class Review {
         return numOfStars;
     }
 
-    @Override
-    public  String toString() {
-        return "some text for body " + body + "By " + author + "star rating is " + numOfStars;
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Review{" +
+                "body='" + body + '\'' +
+                ", author='" + author + '\'' +
+                ", numOfStars=" + numOfStars +
+                '}';
     }
-
 }
